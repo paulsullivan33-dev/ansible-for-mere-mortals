@@ -1,0 +1,25 @@
+site_name: Ansible for Mere Mortals
+site_description: Plain-language Ansible — inventories, playbooks, idempotency, templates and handlers, roles, Vault, and running a small fleet without drama.
+site_url: https://paulsullivan33-dev.github.io/ansible-for-mere-mortals/
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Ansible Is: what-ansible-is.md
+  - Inventory and Config: inventory-and-config.md
+  - Ad-Hoc Commands: ad-hoc-commands.md
+  - Your First Playbook: your-first-playbook.md
+  - Idempotency: idempotency.md
+  - Variables and Facts: variables-and-facts.md
+  - Templates and Handlers: templates-and-handlers.md
+  - Roles: roles.md
+  - Secrets with Vault: vault-secrets.md
+  - Check Mode and Debugging: check-mode-and-debugging.md
+  - Running a Fleet: running-a-fleet.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

@@ -1,0 +1,5 @@
+---
+- name: Use a role
+  hosts: webservers
+  roles:
+    - demoapp

@@ -1,0 +1,6 @@
+---
+- name: Role task - drop a marker file
+  ansible.builtin.copy:
+    content: "installed by the demoapp role\n"
+    dest: "/tmp/demoapp-{{ inventory_hostname }}/role-marker.txt"
+    mode: "0644"

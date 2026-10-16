@@ -1,0 +1,5 @@
+# Managed by Ansible -- edits will be overwritten
+[app]
+port = {{ app_port }}
+host = {{ inventory_hostname }}
+environment = {{ env_name | default('production') }}

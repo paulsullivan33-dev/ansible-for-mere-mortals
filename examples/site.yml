@@ -1,0 +1,35 @@
+---
+- name: Configure the demo app
+  hosts: webservers
+  vars:
+    app_dir: /tmp/demoapp-{{ inventory_hostname }}
+  tasks:
+    - name: Create the app directory
+      ansible.builtin.file:
+        path: "{{ app_dir }}"
+        state: directory
+        mode: "0755"
+
+    - name: Copy the notice file
+      ansible.builtin.copy:
+        src: files/motd.txt
+        dest: "{{ app_dir }}/motd.txt"
+        mode: "0644"
+
+    - name: Template the app config
+      ansible.builtin.template:
+        src: templates/app.conf.j2
+        dest: "{{ app_dir }}/app.conf"
+        mode: "0644"
+      notify: Stamp config change
+
+    - name: Show the rendered config path
+      ansible.builtin.debug:
+        msg: "Config for {{ inventory_hostname }} written to {{ app_dir }}/app.conf"
+
+  handlers:
+    - name: Stamp config change
+      ansible.builtin.copy:
+        content: "config changed at {{ ansible_facts['date_time']['iso8601'] }}\n"
+        dest: "{{ app_dir }}/.config-stamp"
+        mode: "0644"
